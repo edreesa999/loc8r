@@ -1,0 +1,35 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  .row.banner
+    .col-12
+      h1= pageHeader.title
+        small &nbsp;#{pageHeader.strapLine}
+
+  .row
+    .col-12.col-md-8
+      .error= message
+
+      app-home-list
+        .card
+          .card-block
+
+              +outputRating(location.rating)
+              span.badge.badge-pill.badge-default.float-right= location.distance
+            p.address= location.address
+            .facilities
+              each facility in location.facilities
+                span.badge.badge-warning= facility
+
+    .col-12.col-md-4
+      p.lead= sidebar
+      block scripts
+        script(src='/build/main-es5.5f7dfb47a71f98757fea.js')
+        script(src='/build/main-es2015.5f7dfb47a71f98757fea.js')
+        script(src='/build/polyfills-es5.9e286f6d9247438cbb02.js')
+        script(src='/build/polyfills-es2015.690002c25ea8557bb4b0.js')
+        script(src='/build/runtime-es5.1eba213af0b233498d9d.js')
+        script(src='/build/runtime-es2015.1eba213af0b233498d9d.js')
+
